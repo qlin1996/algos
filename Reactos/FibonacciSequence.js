@@ -11,12 +11,10 @@ Input  : n = 9
 Output : 34
 */
 
-function Fibonacci(n) {
-  function fibMemo(n, memo) {
-    if (n === 0 || n === 1) return n;
-    if (memo[n]) return memo[n];
-    memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);
-    return memo[n];
-  }
-  return fibMemo(n, {});
+let memo = {};
+
+function fibonacci(n) {
+  if (n === 0 || n === 1) return n;
+  if (memo[n]) return memo[n];
+  return fibonacci(n - 1) + fibonacci(n - 2);
 }
