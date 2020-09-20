@@ -29,7 +29,7 @@ function stringPermutations(string) {
 }
 
 // sort before finding all permutations
-function sortedStringPermutations(str) {
+function sortStringPermutations(str) {
   const sortedStr = str.split("").sort().join("");
   return stringPermutations(sortedStr);
 }
