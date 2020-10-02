@@ -11,10 +11,13 @@ Input  : n = 9
 Output : 34
 */
 
-let memo = {};
+let memo = { 0: 0, 1: 0 };
 
 function fibonacci(n) {
-  if (n === 0 || n === 1) return n;
-  if (memo[n]) return memo[n];
-  return fibonacci(n - 1) + fibonacci(n - 2);
+  if (n in memo) {
+    return memo[n];
+  } else {
+    memo[n] = fibonacci(n - 1) + fibonacci(n - 2);
+    return memo[n];
+  }
 }
