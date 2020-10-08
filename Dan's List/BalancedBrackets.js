@@ -9,14 +9,18 @@ console.log('false? ', validParentheses("())("))
 */
 
 function validParentheses2(parens) {
-  const stack = [];
+  let stack = [];
+  let obj = { "(": ")", "[": "]", "{": "}" };
 
-  for (let i = 0; i < parens.length; i++) {
-    if (parens[i] === "(") {
-      stack.push(parens[i]);
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+    if (obj[char]) {
+      stack.push(char);
     } else {
-      if (!stack.length) return false;
-      else stack.pop();
+      const endBrace = stack.pop();
+      if (obj[endBrace] !== char) {
+        return false;
+      }
     }
   }
   return !stack.length;
