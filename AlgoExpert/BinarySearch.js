@@ -10,16 +10,15 @@ function binarySearch(array, target) {
   let rightIdx = array.length - 1;
 
   while (leftIdx <= rightIdx) {
-    const middleIdx = Math.floor((leftIdx + rightIdx) / 2);
-    const potentialMatch = array[middleIdx];
-
-    if (target === potentialMatch) {
-      return middleIdx;
-    } else if (target < potentialMatch) {
-      rightIdx = middleIdx - 1;
+    let midIdx = Math.floor((rightIdx - leftIdx) / 2) + leftIdx;
+    console.log(leftIdx, midIdx, rightIdx);
+    if (array[midIdx] === target) return midIdx;
+    if (array[midIdx] > target) {
+      rightIdx = midIdx - 1;
     } else {
-      leftIdx = middleIdx + 1;
+      leftIdx = midIdx + 1;
     }
   }
+
   return -1;
 }
