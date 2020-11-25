@@ -11,3 +11,17 @@ Input =
 
 Output = 1->1->2->3->4->5->6->7->8->8
 */
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+function merge2List(list1, list2) {
+  let newList = new Node(0);
+  let end = newList;
+
+  while(list1)
+}

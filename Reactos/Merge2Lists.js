@@ -9,12 +9,21 @@ headTwo = 1 -> 3 -> 4 -> 5 -> 9 -> 10 // the head node with value 1
 mergeLinkedLists(headOne, headTwo) = 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10 // the new head node with value 1
 */
 
-function merge2Lists(list1, list2) {
-  let p1 = list1.head;
-  let p2 = list2.head;
-  let p1Prev = null;
-  while (p1.next || p2.next) {
+function merge2ListsInPlace(headOne, headTwo) {
+  let p1 = headOne;
+  let p2 = headTwo;
+  let prev = null;
+
+  while (p1 || p2) {
     if (p2.value > p1.value) {
+      p1 = p1.next;
+      prev = p1;
+    } else {
+      prev = p2;
+      p2 = p2.next;
+      prev.next = p1;
     }
   }
+  if (p2) p1.next = p2;
+  return headOne.value < headTwo.value ? headOne : headTwo;
 }
