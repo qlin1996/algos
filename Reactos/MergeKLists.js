@@ -21,7 +21,35 @@ class Node {
 
 function merge2List(list1, list2) {
   let newList = new Node(0);
-  let end = newList;
+  let curr = newList;
 
-  while(list1)
+  while (list1 && list2) {
+    if (list1.val <= list2.val) {
+      curr.next = list1;
+      list1 = list1.next;
+    } else {
+      curr.next = list2;
+      list2 = list2.next;
+    }
+    curr = curr.next;
+  }
+
+  if (list2) curr.next = list2;
+  if (list1) curr.next = list1;
+
+  return newList.next;
+}
+
+function mergeKLists(lists) {
+  if (lists.length === 0) return null;
+  let interval = 1;
+  while (interval < lists.length) {
+    let index = 0;
+    while (index + interval < lists.length) {
+      lists[index] = merge2List(lists[index], lists[index + interval]);
+      index = interval * 2 + index;
+    }
+    interval *= 2;
+  }
+  return lists[0];
 }
