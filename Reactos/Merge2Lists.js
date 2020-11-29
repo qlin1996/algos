@@ -11,19 +11,46 @@ mergeLinkedLists(headOne, headTwo) = 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -
 
 function merge2ListsInPlace(headOne, headTwo) {
   let p1 = headOne;
-  let p2 = headTwo;
   let prev = null;
+  let p2 = headTwo;
 
-  while (p1 || p2) {
+  while (p1 && p2) {
     if (p2.value > p1.value) {
-      p1 = p1.next;
       prev = p1;
+      p1 = p1.next;
     } else {
+      if (prev) prev.next = p2;
       prev = p2;
       p2 = p2.next;
       prev.next = p1;
     }
   }
-  if (p2) p1.next = p2;
+
+  if (p2) prev.next = p2;
   return headOne.value < headTwo.value ? headOne : headTwo;
 }
+
+const node = (value) => ({
+  value,
+});
+
+const two = node(2);
+const six = node(6);
+const seven = node(7);
+const eight = node(8);
+two.next = six;
+six.next = seven;
+seven.next = eight;
+console.log(two);
+
+const one = node(1);
+const three = node(3);
+const four = node(4);
+const five = node(5);
+const nine = node(9);
+const ten = node(10);
+one.next = three;
+three.next = four;
+four.next = five;
+nine.next = ten;
+console.log(one);
