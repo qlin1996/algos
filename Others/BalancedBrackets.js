@@ -8,9 +8,9 @@ console.log('true? ', validParentheses("(())((()())())" ))
 console.log('false? ', validParentheses("())("))
 */
 
-function validParentheses2(parens) {
+function validParentheses2(string) {
   let stack = [];
-  let obj = { "(": ")", "[": "]", "{": "}" };
+  let obj = { '(': ')', '[': ']', '{': '}' };
 
   for (let i = 0; i < string.length; i++) {
     const char = string[i];
