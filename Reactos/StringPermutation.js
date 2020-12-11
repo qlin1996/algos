@@ -19,6 +19,7 @@ function stringPermutations(string) {
 
   for (let i = 0; i < string.length; i++) {
     const firstChar = string[i];
+    if (string.indexOf(firstChar) !== i) continue;
     const charsLeft = string.slice(0, i) + string.slice(i + 1);
     const innerPermutations = stringPermutations(charsLeft);
     for (let j = 0; j < innerPermutations.length; j++) {
@@ -30,6 +31,6 @@ function stringPermutations(string) {
 
 // sort before finding all permutations
 function sortStringPermutations(str) {
-  const sortedStr = str.split("").sort().join("");
+  const sortedStr = str.split('').sort().join('');
   return stringPermutations(sortedStr);
 }
